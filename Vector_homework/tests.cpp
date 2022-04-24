@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <iostream>
 #include "doctest.h"
-#include "vector.h"
+#include "vector.cpp"
 //Can't seem to extcract vector from the main fucniton.
 Vector v1;
 //Prob not the right way, but compilator accepts it this way.

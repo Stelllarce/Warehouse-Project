@@ -11,7 +11,7 @@
         string = temp;
     }
 
-    char* strcpy(char* destination, const char* source)
+    char* strcpy_a(char* destination, const char* source)
     {
         if (destination == nullptr) {
             return nullptr;
@@ -30,7 +30,7 @@
         return ptr;
     }
 
-    unsigned int strlen_s(const char *s){
+    unsigned int strlen_a(const char *s){
         
         unsigned int count = 0;
         while(*s!='\0')
@@ -42,10 +42,10 @@
     }
     String::String(): string{ nullptr }, capacity(0), len(0) {}
     
-    // String::String(char *s): string{ new char[strlen(s) + 1]}, len{strlen(s)}, capacity{len} {
+    String::String(char *s): string{ new char[strlen(s) + 1]}, len{strlen(s)}, capacity{len} {
 
-    //     strcpy(string, s);
-    // }
+        strcpy(string, s);
+    }
 
     String::String(const char *s): string{ new char[strlen(s) + 1]}, len(strlen(s)), capacity(strlen(s)) {
 
@@ -178,7 +178,7 @@
         {
             string[i] = s.string[j++];
         }
-        string[capacity - 1] = '\0';
+        string[len] = '\0';
         return *this;
     }
 
@@ -187,8 +187,10 @@
         if (this->capacity < s.len)
         {
             this->resize(s.len);
-        } else {
-
+            len = capacity;
+        } 
+        if (s.capacity < len)
+        {
             s.resize(this->len);
             s.len = s.capacity;
         } 
@@ -249,20 +251,16 @@
 
     std::ostream& operator<<(std::ostream& os, const String& s) {
 
-        for (int i = 0; i < strlen(s.string); i++)
-        {
-            os << s.string[i];
-        }
-        return os;
+        return os << s.cStr();
     }
 
     std::istream& operator>>(std::istream& is, String& s) {
 
-        const int BUFFER = 2048;
-        char buf[BUFFER];
-        is.get(buf, BUFFER, '\n');
-
-        s = String(buf);
+        int BUFFER = 1024;
+        s.string = new char[BUFFER];
+        s.capacity = BUFFER;
+        is.getline(s.string, BUFFER);
+        s.len = strlen(s.string);
         return is;
     }
 

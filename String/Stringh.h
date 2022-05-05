@@ -3,6 +3,7 @@
 #include <iostream>
 class String {
 
+    private:
     size_t capacity, len;
     char* string;
 
@@ -11,7 +12,7 @@ class String {
 
     //constructors
     String();
-    //String(char *s);
+    String(char *s);
     String(const char *s);
     String(const String& s);
     String(String&& s);
@@ -58,10 +59,10 @@ class String {
     String operator+(const String s, const String s1);
 
     //strlen
-    unsigned int strlen_s(const char *s);
+    unsigned int strlen_a(const char *s);
 
     //strcpy
-    char* strcpy(char* destination, const char* source);
+    char* strcpy_a(char* destination, const char* source);
 
     //compare operators
     bool operator<(const String& s, const String& s1);
@@ -73,6 +74,6 @@ class String {
     
     //output/input stream
     std::ostream& operator<<(std::ostream& os, const String& s);
-    std::istream& operator>>(std::ostream& is, String& s);
+    std::istream& operator>>(std::istream& is, String& s);
 
 #endif

@@ -1,15 +1,38 @@
 #include "Shelf.h"
 #include "Item.h"
 
-bool Shelf::isFull() { return itemCount == itemCapacity; }
+const unsigned int itemCap = 5;
 
-int Shelf::getItemCount() { return itemCount; }
+Shelf::Shelf(): name(0), itemCount(0), itemCapacity(itemCap) {
 
-Shelf::Shelf(unsigned int name): name{name} {
-
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < this->itemCapacity; i++)
     {
-        items.pushBack(Item())
+        items.pushBack(Item());
     }
     
 }
+
+Shelf::Shelf(int name): name{name}, itemCount(0), itemCapacity(itemCap) {
+
+    for (int i = 0; i < this->itemCapacity; i++)
+    {
+        items.pushBack(Item());
+    }
+    
+}
+
+bool Shelf::isSFull() { return itemCount == itemCapacity; }
+
+int Shelf::getItemCount() { return itemCount; }
+
+void Shelf::addItem(Item &item, int pos) {
+
+    if (itemCount == itemCapacity)
+    {
+        std::cout << "The shelf is full!" << '\n';
+    }
+    
+    items.placeAt(pos, item);
+    itemCount++;
+}
+

@@ -8,8 +8,9 @@ class Date {
 
     private:
 
-    unsigned int year, month, day;
     String date;
+    unsigned int year, month, day;
+
     public:
 
     //constructors
@@ -21,7 +22,7 @@ class Date {
     //operators
     Date& operator=(const Date& d);
     //time period bewteen two dates
-    Date& operator-(const Date& d);
+    Date operator-(const Date& d);
 
     bool operator<(const Date& d); 
     bool operator>(const Date& d);

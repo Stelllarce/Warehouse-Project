@@ -1,18 +1,21 @@
 #ifndef SHELF
 #define SHELF
+#include <iostream>
 #include "Item.h"
-#include "../vector/vector.h"
+#include "..\Vector\Vector.cpp"
+
 class Shelf {
 
-    unsigned int name, itemCount, itemCapacity = 100;
-    Item items[100];
+    unsigned int name, itemCount, itemCapacity;
+    Vector<Item> items;
 
     public:
-    Shelf(unsigned int name);
-    ~Shelf();
+    Shelf();
+    Shelf(int name);
 
+    void addItem(Item &item, int pos);
     int getItemCount();
-    void addItem(Item item);
-    bool isFull();
+    bool isSFull();
+
 };
 #endif

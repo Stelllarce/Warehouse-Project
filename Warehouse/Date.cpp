@@ -21,7 +21,7 @@ Date& Date::operator=(const Date& d) {
     return *this;
 }
 
-Date& Date::operator-(const Date& d) {
+Date Date::operator-(const Date& d) {
 
     Date diff;
     diff.year = year - d.year;

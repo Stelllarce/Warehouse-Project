@@ -1,22 +1,22 @@
 #ifndef RACK
 #define RACK
 #include "Shelf.h"
-#include "../vector/vector.h"
+#include "../Vector/Vector.h"
 class Rack {
 
     private:
-    
+    Shelf a;
+    Vector<Shelf> shelfs;
     char name;
-    unsigned int haveSpace = 10;
-    Shelf shelf[10];
-
+    unsigned int haveSpace, shelfCapacity;
+    
     public:
 
-    Rack();
-    Rack(char name, int haveSpace, Shelf* shelf);
-    Vector<Shelf>& getVector();
+    Rack(char name);
 
-    bool isFull();
+    bool  isRFull() const;
+    void spaceCheck();
+    
 };
 
 

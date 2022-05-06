@@ -1,16 +1,27 @@
 #include "Rack.h"
 
-bool Rack::isFull() {
+const unsigned int rackCap = 0;
 
-    int i = 0, count = 0;
-    while (shelf.getAt(i).isFull() && i < haveSpace) 
+Rack::Rack(char name): name{name}, haveSpace(rackCap), shelfCapacity(rackCap) {
+
+    int index = 1;
+    for (int i = 0; i < shelfCapacity; i++)
     {
-        count++;
-        i++;
+        Shelf newShelf(index);
+        shelfs.placeAt(i, newShelf);
+        index++;
     }
-    return count == haveSpace;
+    
 }
-Vector<Shelf>& Rack::getVector() {
 
-    return shelf;
+void Rack::spaceCheck() {
+
+    int count = 0;
+    for (int i = 0; i < shelfCapacity; i++)
+    {
+        count += (shelfs.getAt(i).isSFull()) ? count++ : 0;
+    }
+    haveSpace -= count;
 }
+
+bool Rack::isRFull() const { return haveSpace == 0; }

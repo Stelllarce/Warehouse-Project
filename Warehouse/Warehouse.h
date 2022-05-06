@@ -2,6 +2,7 @@
 #define WAREHOUSE
 
 #include <iostream>
+#include "../Vector/Vector.h"
 #include "../String/Stringh.h"
 #include "Item.h"
 #include "Rack.h"
@@ -10,15 +11,15 @@ class Warehouse {
 
     private:
 
-    unsigned int haveSpaces;
-    Rack* racks;
+    String name;
+    Vector<Rack> racks;
+    unsigned int haveSpaces, warehouseCapacity;
 
     public:
-    Warehouse();
-    Warehouse(char section, unsigned int Warehouse, String in);
-    Warehouse(const Warehouse& other);
 
-    void addItem(Item i);
+    Warehouse(String name);
+
+    void addItemW(Item& i);
 
     
 

@@ -1,9 +1,19 @@
 // #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 // #include "doctest.h"
 #include <iostream>
-#include "vector.cpp"
+#include "Vector.cpp"
     using std::cout;
     using std::endl;
+
+class Geeks
+{
+    int id;
+    public:
+    void getid(int id) { this->id = id; } 
+     
+    
+};
+
 int main() {
 
 
@@ -15,7 +25,8 @@ v1.pushBack('d');
 v1.pushBack('e');
 v1.pushBack('f');
 
+v1.removeAt(3);
+v1.placeAt(3, 'D');
 v1.print();
-
 
 }

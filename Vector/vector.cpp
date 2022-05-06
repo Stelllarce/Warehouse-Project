@@ -1,5 +1,6 @@
-#include "vector.h"
 #include <iostream>
+#include <exception>
+#include "Vector.h"
 using namespace std;
 template <typename T>
 void Vector<T>::reset(){
@@ -27,7 +28,7 @@ void Vector<T>::sizeDown(){
         return;
     }
     capacity /= 2;
-    resize();
+    //resize();
 }
 template <typename T>
 void Vector<T>::sizeUp(){
@@ -130,7 +131,7 @@ int Vector<T>::getLast() {
     return vector[size - 1];
 }
 template <typename T>
-void Vector<T>::assign(int n, int x) {
+void Vector<T>::assign(int n, T x) {
 
     delete[] vector;
     reset();
@@ -138,6 +139,16 @@ void Vector<T>::assign(int n, int x) {
 
         pushBack(x);
     }
+}
+template <typename T>
+void Vector<T>::placeAt(int position, T x) {
+
+    if (position > capacity) 
+    {
+        sizeUp();
+    }
+    vector[position] = x;
+    size++;
 }
 template <typename T>
 void Vector<T>::pushBack(T x){
@@ -160,14 +171,13 @@ void Vector<T>::popBack(){
 template <typename T>
 void Vector<T>::removeAt(int position){
 
-    if(isEmpty() || position >= size) return;
-    size--;
-    for(int position; position < size; position++) {
+    if(isEmpty() || position >= size) { return; }
+    for(int i = position; i < size; i++) {
 
-        vector[position] = vector[position + 1];
+        vector[i] = vector[i + 1];
     }
-    sizeDown();
-
+    //sizeDown();
+    size--;
 }
 template <typename T>
 void Vector<T>::print() const {
@@ -178,7 +188,15 @@ void Vector<T>::print() const {
     }
     cout << '\n';
 }
+template <typename T>
+T& Vector<T>::operator[](int index) {
 
+    if (index >= size)
+    {
+        throw runtime_error("Too big index");
+    }
+    return *(vector + index);
+}
 
 
 

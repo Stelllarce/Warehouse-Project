@@ -33,10 +33,13 @@ class Vector {
     bool isEmpty();
 
     //operations
-    void assign(int n, int x);
+    void assign(int n, T x);
+    void placeAt(int position, T x);
     void pushBack(T x);
     void popBack();
     void removeAt(int position);
+
+    T& operator[](int index);
 
     //print
     void print() const;

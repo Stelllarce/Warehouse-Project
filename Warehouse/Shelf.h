@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Item.h"
 #include "..\Vector\Vector.cpp"
+#include "Warehouse.h"
 
 class Shelf {
 
@@ -17,5 +18,6 @@ class Shelf {
     int getItemCount();
     bool isSFull();
 
+    friend class Warehouse;
 };
 #endif

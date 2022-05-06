@@ -2,6 +2,7 @@
 #define RACK
 #include "Shelf.h"
 #include "../Vector/Vector.h"
+#include "Warehouse.h"
 class Rack {
 
     private:
@@ -17,6 +18,7 @@ class Rack {
     bool  isRFull() const;
     void spaceCheck();
     
+    friend class Warehouse;
 };
 
 

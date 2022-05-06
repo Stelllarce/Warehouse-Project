@@ -40,7 +40,10 @@
         }
         return count;
     }
-    String::String(): string{ nullptr }, capacity(0), len(0) {}
+    String::String(): string{ new char[1] }, capacity(1), len(0) {
+
+        string[0] = '\0';
+    }
     
     String::String(char *s): string{ new char[strlen(s) + 1]}, len{strlen(s)}, capacity{len} {
 

@@ -7,7 +7,7 @@ Item::Item(): description(String()),
 manufacturer(String()), 
 gotIn(Date()), 
 expiration(Date()), 
-rack('\0'), 
+rack(0), 
 shelf{0}, 
 idn{0}, 
 quantity(0), 
@@ -22,7 +22,7 @@ manufacturer(manufacturer),
 quantity(quantity),
 shelf(0), 
 idn(0),
-rack('\0') {}
+rack(0) {}
 
 Item::Item(const Item& other) {
 
@@ -85,7 +85,7 @@ String Item::getManufact() const {return manufacturer; }
 
 void Item::printItem() {
 
-    std::cout << description << " man " << manufacturer << " gotin " << gotIn << " exp " << expiration << " com " << comment << " idn " << idn << " q " << quantity << " r " << rack << " s " << shelf;
+    std::cout << "Name: " << description << "\nManufacturer: " << manufacturer << "\nGotin: " << gotIn << "\nExpiration date: " << expiration << "\nQuantity: " << quantity << "\nRack: " << rack << "\nShelf " << shelf << "\nIdentification number: " << idn << "\nComment:\n\n" << comment;
 }
 
 unsigned int Item::getQuantity() { return quantity; }
@@ -104,4 +104,35 @@ void Item::decreaseQuantity(unsigned int decrement) {
 Date Item::getExpiration() {
 
     return expiration;
+}
+
+std::istream& operator>>(std::istream& is, Item& d) {
+
+    is >> "Enter name: " >> d.description >> "\nEnter manufacturer: " >> d.manufacturer >> "\nEnter current date: " >> d.gotIn >> "\nEnter expiration date: " >> d.expiration;
+    std::cout << "Would you like to add a comment? Type 'yes' to add\n";
+    String temp;
+    is >> temp;
+    if (temp == String("yes"))
+    {
+        d.addComment();
+    }
+    return is;
+    
+
+}  
+
+String& Item::log() {
+
+    String temp;
+    temp = description + String(" by ") + manufacturer;
+    temp = temp + manufacturer;
+
+    temp = temp + String ("Quantity: ");
+}
+
+void Item::setLocation(unsigned int rack, unsigned int shelf, unsigned int idn) {
+
+    this->rack = rack;
+    this->shelf= shelf;
+    this->idn = idn;
 }

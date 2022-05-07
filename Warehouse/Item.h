@@ -34,11 +34,13 @@ class Item {
     bool operator==(const Item& i);
 
     //getters
+    String& log();
     char getRack();
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;
     Date getExpiration();
+    String getExpirationS();
     unsigned int getQuantity();
 
 
@@ -51,6 +53,8 @@ class Item {
 
     void printItem();
 
+    friend std::istream& operator>>(std::istream& is, Item& d);    
 };
+    std::istream& operator>>(std::istream& is, Item& d);    
 
 #endif

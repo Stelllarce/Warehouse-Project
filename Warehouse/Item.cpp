@@ -42,16 +42,16 @@ void Item::addComment() {
     this->comment = comment;
 }
 
-Item& Item::operator++() {
+void Item::operator++() {
 
     quantity++;
-    return *this;
+    return;
 }
 
-Item& Item::operator--() {
+void Item::operator--() {
 
     quantity--;
-    return *this;
+    return;
 }
  bool Item::operator!=(const Item& i) {
 
@@ -89,3 +89,19 @@ void Item::printItem() {
 }
 
 unsigned int Item::getQuantity() { return quantity; }
+
+void Item::increaseQuantity(unsigned int increment) {
+
+    quantity += increment;
+    return;
+}
+void Item::decreaseQuantity(unsigned int decrement) {
+
+    quantity -= decrement;
+    return;
+}
+
+Date Item::getExpiration() {
+
+    return expiration;
+}

@@ -38,13 +38,16 @@ class Item {
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;
+    Date getExpiration();
     unsigned int getQuantity();
 
 
     //operators
     Item& operator=(const Item& i);
-    Item& operator++();//prefix
-    Item& operator--();
+    void operator++();//prefix
+    void operator--();
+    void increaseQuantity(unsigned int increment);
+    void decreaseQuantity(unsigned int decrement);
 
     void printItem();
 

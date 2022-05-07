@@ -246,9 +246,15 @@
     String operator+(const String s, const String s1) {
 
         String newString;
-        newString.string = strcat(s.string, s1.string);
-        newString.len = strlen(newString.string);
-        newString.capacity = newString.len;
+        newString.len = strlen(s1.string) + strlen(s.string);
+        newString.capacity = newString.len + 1;
+        strcat(s.string, s1.string);
+        for (int i = 0; i < newString.len; i++)
+        {
+            newString.string[i] = s.string[i];
+        }
+        
+        newString.string[newString.capacity - 1] = '\0';
         return newString;
     }
 

@@ -14,7 +14,7 @@ Warehouse::Warehouse(String name): name{name}, haveSpaces(warehouseCap), warehou
     }
 }  
 
-void Warehouse::addItemW(Item& I) {
+void Warehouse::addItemWarehouse(Item& I) {
 
     for (int i = 0; i < 5; i++)
     {
@@ -46,7 +46,7 @@ bool Warehouse::seek(Item addedItem, int& slider1, int& slider2, int& slider3) {
         {
             for (int k = slider3; k < 10; k++)
             {
-                if (addedItem == racks[i].shelfs[i].items[i])
+                if (addedItem == racks[i].shelfs[j].items[k])
                 {
                     return true;
                 }
@@ -61,5 +61,15 @@ bool Warehouse::seek(Item addedItem, int& slider1, int& slider2, int& slider3) {
         }
         
     }
+    
+}
+
+void Warehouse::placeItem(Item& addedItem, int& slider1, int& slider2, int& slider3) {
+
+    if (racks[slider1].shelfs[slider2].isEmpty(slider3))
+    {
+        racks[slider1].shelfs[slider2].addItem(addedItem, slider3);
+    }
+    
     
 }

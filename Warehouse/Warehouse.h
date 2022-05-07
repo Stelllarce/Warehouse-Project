@@ -16,12 +16,13 @@ class Warehouse {
     unsigned int haveSpaces, warehouseCapacity;
 
     bool seek(Item addedItem, int& slider1, int& slider2, int& slider3);
-    
+    void placeItem(Item& addedItem, int& slider1, int& slider2, int& slider3);
     public:
 
+    Warehouse();
     Warehouse(String name);
 
-    void addItemW(Item& i);
+    void addItemWarehouse(Item& i);
 
 
 };

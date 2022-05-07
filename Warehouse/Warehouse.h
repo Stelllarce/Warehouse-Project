@@ -3,7 +3,6 @@
 
 #include "../Vector/Vector.h"
 #include "../String/Stringh.h"
-#include "Item.h"
 #include "Rack.h"
 #include <iostream>
 
@@ -18,15 +17,16 @@ class Warehouse {
     bool seek(Item addedItem, int& slider1, int& slider2, int& slider3);
     bool placeItem(Item& addedItem);
     bool sort(Item& item, int& slider1, int& slider2, int& slider3);
+    
     public:
 
     Warehouse();
     Warehouse(String name);
 
-    void addItemWarehouse(Item& i);
+    void addItemWarehouse(Item i);
+    void printItems();
 
 
 };
 
-    std::ostream& operator<<(std::ostream& stream, const Warehouse& d);
 #endif

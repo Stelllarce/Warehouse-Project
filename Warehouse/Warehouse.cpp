@@ -15,7 +15,7 @@ Warehouse::Warehouse(String name): name{name}, haveSpaces(warehouseCap), warehou
     }
 }  
 
-void Warehouse::addItemWarehouse(Item& I) {
+void Warehouse::addItemWarehouse(Item I) {
     int i, j, k;
     i = j = k = 0;
     if (seek(I, i, j, k))//if similar item is found
@@ -63,6 +63,7 @@ bool Warehouse::placeItem(Item& addedItem) {
                 if (racks[j].shelfs[k].isEmpty(i))
                 {
                     racks[j].shelfs[k].addItem(addedItem, i);
+                    addedItem.setLocation(j, k, i); 
                     return true;
                 }                
             }
@@ -86,11 +87,13 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
     if (racks[slider1].shelfs[slider2].isEmpty(slider3 + 1))
     {
         racks[slider1].shelfs[slider2].addItem(item, slider3 + 1);
+        item.setLocation(slider1, slider2, slider3 + 1); 
         return true;
     }
     if (racks[slider1].shelfs[slider2].isEmpty(slider3 - 1) && slider3 > 0)
     {
         racks[slider1].shelfs[slider2].addItem(item, slider3 - 1);
+        item.setLocation(slider1, slider2, slider3 - 1); 
         return true;
     }
 
@@ -103,6 +106,8 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
             a++;
         }
         racks[slider1].shelfs[slider2 + 1].addItem(item, a);
+        item.setLocation(slider1, slider2 + 1, slider3); 
+
         return true;
     }
     if ( !(racks[slider1].shelfs[slider2 - 1].isSFull()) && slider2 > 0)
@@ -113,6 +118,8 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
             b++;
         }
         racks[slider1].shelfs[slider2 - 1].addItem(item, b);
+        item.setLocation(slider1, slider2 - 1, slider3); 
+
         return true;
     }
 
@@ -129,7 +136,8 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
                 {
                     b++;
                 }
-                racks[slider1].shelfs[slider2 - 1].addItem(item, b); 
+                racks[slider1].shelfs[slider2].addItem(item, b);
+                item.setLocation(slider1, slider2, slider3); 
                 return true;
             }
              
@@ -147,7 +155,8 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
                 {
                     b++;
                 }
-                racks[slider1].shelfs[slider2 - 1].addItem(item, b); 
+                racks[slider1].shelfs[slider2].addItem(item, b);
+                item.setLocation(slider1, slider2, slider3); 
                 return true;   
             }
              
@@ -157,5 +166,22 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
     
     return false;
     
+    
+}
+
+void Warehouse::printItems() {
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            for (int k = 0; k < 10; k++)
+            {
+                racks[i].shelfs[j].items[k].printItem();
+            }
+            
+        }
+        
+    }
     
 }

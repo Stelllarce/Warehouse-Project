@@ -42,17 +42,6 @@ void Item::addComment() {
     this->comment = comment;
 }
 
-// void Item::setIdn(int pos) {
-
-//     String idn;
-//     if (pos < 10)
-//     {
-//         /* code */
-//     }
-    
-// }
-
-
 Item& Item::operator++() {
 
     quantity++;
@@ -98,3 +87,5 @@ void Item::printItem() {
 
     std::cout << description << " man " << manufacturer << " gotin " << gotIn << " exp " << expiration << " com " << comment << " idn " << idn << " q " << quantity << " r " << rack << " s " << shelf;
 }
+
+unsigned int Item::getQuantity() { return quantity; }

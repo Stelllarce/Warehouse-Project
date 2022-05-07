@@ -18,6 +18,8 @@ class Shelf {
     int getItemCount();
     bool isSFull();
 
+    bool isEmpty(int pos);
+
     friend class Warehouse;
 };
 #endif

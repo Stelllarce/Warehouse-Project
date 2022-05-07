@@ -38,6 +38,7 @@ class Item {
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;
+    unsigned int getQuantity();
 
 
     //operators

@@ -2,6 +2,8 @@
 
 const unsigned int warehouseCap = 5;
 
+Warehouse::Warehouse(): name(String()), racks(Vector<Rack>()), haveSpaces(0), warehouseCapacity(0) {}
+
 Warehouse::Warehouse(String name): name{name}, haveSpaces(warehouseCap), warehouseCapacity(warehouseCap) {
 
     char index = 1;
@@ -26,7 +28,7 @@ void Warehouse::addItemW(Item& I) {
                 }
                 else
                 {
-                    //place on the first empty space (requires isEmpty() from Item class)
+                    //place on the first empty space (requires isEmpty() from Shelf class)
                 }
                 
             }

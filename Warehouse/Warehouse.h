@@ -1,11 +1,11 @@
 #ifndef WAREHOUSE
 #define WAREHOUSE
 
-#include <iostream>
 #include "../Vector/Vector.h"
 #include "../String/Stringh.h"
 #include "Item.h"
 #include "Rack.h"
+#include <iostream>
 
 class Warehouse {
 
@@ -16,7 +16,8 @@ class Warehouse {
     unsigned int haveSpaces, warehouseCapacity;
 
     bool seek(Item addedItem, int& slider1, int& slider2, int& slider3);
-    void placeItem(Item& addedItem, int& slider1, int& slider2, int& slider3);
+    bool placeItem(Item& addedItem);
+    bool sort(Item& item, int& slider1, int& slider2, int& slider3);
     public:
 
     Warehouse();

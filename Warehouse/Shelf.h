@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Item.h"
 #include "..\Vector\Vector.cpp"
-#include "Warehouse.h"
 
 class Shelf {
 
@@ -12,7 +11,7 @@ class Shelf {
 
     public:
     Shelf();
-    Shelf(int name);
+    Shelf(unsigned int name);
 
     void addItem(Item &item, int pos);
     int getItemCount();

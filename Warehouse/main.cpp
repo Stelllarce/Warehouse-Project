@@ -1,10 +1,18 @@
 #include "Warehouse.h"
 #include <iostream>
+#include <cstring>
 
 using std::cin;
 using std::cout;
 
-void writeToLog();
+void writeToLog(Vector<String> v, Item item) {
+    //requires date and quantuty to be converted to string
+    String a("Added ");
+    strcat(a.cStr(), item.getName().cStr());
+    strcat(a, " ");
+    strcat(a, item.getManufact());
+    strcat(a, " ");
+}
 
 int main() {
     Warehouse johnson("Johnson");
@@ -39,7 +47,8 @@ int main() {
             Item itemToAdd;
             cout << "Enter the item you want to add\n";
             cin >> itemToAdd;
-            johnson.addItemWarehouse(itemToAdd);                cout << "Item added succesfully!\n";
+            johnson.addItemWarehouse(itemToAdd);                
+            cout << "Item added succesfully!\n";
             //history.pushBack(String());
             
             cout << "Do you wish to add another item?\n";
@@ -72,6 +81,7 @@ int main() {
         if (userInput == String("clear"))
         {
             Date today;
+            cout << "Enter todays date:\n";
             cin >> today;
             johnson.clear(today);
         }

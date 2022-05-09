@@ -30,37 +30,39 @@ int main() {
             johnson.printItems();
         }
 
+        if (userInput == String("add")) {
         String answer;
         do
         {
-            if (userInput == String("add"))
-            {
-                Item itemToAdd;
-                cout << "Enter the item you want to add\n";
-                cin >> itemToAdd;
-                johnson.addItemWarehouse(itemToAdd);
-                cout << "Item added succesfully!\n";
-                //history.pushBack(String());
-            }
+            
+            
+            Item itemToAdd;
+            cout << "Enter the item you want to add\n";
+            cin >> itemToAdd;
+            johnson.addItemWarehouse(itemToAdd);                cout << "Item added succesfully!\n";
+            //history.pushBack(String());
+            
             cout << "Do you wish to add another item?\n";
             cin >> answer;
         } while (answer == String("yes"));
+        }
         
-
+        if (userInput == String("get")) {
+        String answer;
         do
         {
-            if (userInput == String("get"))
-            {
-                Item itemToAdd;
-                cout << "Enter the item you want to extract\n";
-                cin >> itemToAdd;
-                johnson.extractItem(itemToAdd);
-                cout << "Item extracted succesfully!\n";
-                //history.pushBack(String());
-            }
+    
+            Item itemToAdd;
+            cout << "Enter the item you want to extract\n";
+            cin >> itemToAdd;
+            johnson.extractItem(itemToAdd);                
+            cout << "Item extracted succesfully!\n";
+            //history.pushBack(String());
+            
             cout << "Do you wish to extract another item?\n";
             cin >> answer;
         } while (answer == String("yes"));
+        }
         
         if (userInput == String("history"))
         {
@@ -69,7 +71,9 @@ int main() {
         
         if (userInput == String("clear"))
         {
-            /* code */
+            Date today;
+            cin >> today;
+            johnson.clear(today);
         }
 
         if (userInput == String("end"))

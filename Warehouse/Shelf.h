@@ -7,8 +7,9 @@
 
 class Shelf {
 
-    unsigned int name, itemCount, itemCapacity;
     Vector<Item> items;
+    unsigned int name, itemCount;
+    static int itemCapacity;
 
     public:
     Shelf();

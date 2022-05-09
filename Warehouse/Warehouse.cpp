@@ -1,11 +1,11 @@
 #include "Warehouse.h"
 #include <exception>
 
-const unsigned int warehouseCap = 5;
+int Warehouse::warehouseCapacity = 5;
 
-Warehouse::Warehouse(): name(String()), racks(Vector<Rack>()), haveSpaces(0), warehouseCapacity(0) {}
+Warehouse::Warehouse(): name(String()), racks(Vector<Rack>()), haveSpaces(0) {}
 
-Warehouse::Warehouse(String name): name{name}, haveSpaces(warehouseCap), warehouseCapacity(warehouseCap) {
+Warehouse::Warehouse(String name): name{name}, haveSpaces(warehouseCapacity) {
 
     char index = 1;
     for (int i = 0; i < warehouseCapacity; i++)
@@ -33,11 +33,11 @@ void Warehouse::addItemWarehouse(Item I) {
 }
 bool Warehouse::seek(Item addedItem, int& slider1, int& slider2, int& slider3) {
 
-    for (int i = slider1; i < 5; i++)
+    for (int i = slider1; i < warehouseCapacity; i++)
     {
-        for (int j = slider2; j < 5; j++)
+        for (int j = slider2; j < Rack::shelfCapacity; j++)
         {
-            for (int k = slider3; k < 10; k++)
+            for (int k = slider3; k < Shelf::itemCapacity; k++)
             {
                 if (addedItem == racks[i].shelfs[j].items[k])
                 {
@@ -54,11 +54,11 @@ bool Warehouse::seek(Item addedItem, int& slider1, int& slider2, int& slider3) {
 
 bool Warehouse::placeItem(Item& addedItem) {
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < Shelf::itemCapacity; i++)
     {
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < warehouseCapacity; j++)
         {
-            for (int k = 0; k < 5; k++)
+            for (int k = 0; k < Rack::shelfCapacity; k++)
             {               
                 if (racks[j].shelfs[k].isEmpty(i))
                 {
@@ -127,7 +127,7 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
     racks[slider1 + 1].spaceCheck();//calculate the available shelfs on that rack
     if ( !(racks[slider1 + 1].isRFull()))
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Rack::shelfCapacity; i++)
         {
             if (!(racks[slider1 - 1].shelfs[i].isSFull()))
             {
@@ -146,7 +146,7 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
     racks[slider1 - 1].spaceCheck();//calculate the available shelfs on that rack
     if ( !(racks[slider1 - 1].isRFull()) && slider1 > 0)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Rack::shelfCapacity; i++)
         {
             if (!(racks[slider1 - 1].shelfs[i].isSFull()))
             {
@@ -171,11 +171,11 @@ bool Warehouse::sort(Item& item, int& slider1, int& slider2, int& slider3) {
 
 void Warehouse::printItems() {
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < warehouseCapacity; i++)
     {
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < Rack::shelfCapacity; j++)
         {
-            for (int k = 0; k < 10; k++)
+            for (int k = 0; k < Shelf::itemCapacity; k++)
             {
                 racks[i].shelfs[j].items[k].printItem();
             }
@@ -194,4 +194,22 @@ void Warehouse::extractItem(Item I) {
         racks[i].shelfs[j].items[k].printItem();
         racks[i].shelfs[j].items.removeAt(k);
     }
+}
+
+void Warehouse::clear(Date today) {
+
+    for (int i = 0; i < warehouseCapacity; i++)
+    {
+        for (int j = 0; j < Rack::shelfCapacity; j++)
+        {
+            for (int k = 0; k < Shelf::itemCapacity; k++)
+            {
+                racks[i].shelfs[j].items[k].getExpiration() <= today;
+                racks[i].shelfs[j].items.removeAt(k);
+            }
+            
+        }
+        
+    }
+    
 }

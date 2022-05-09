@@ -12,7 +12,8 @@ class Warehouse {
 
     String name;
     Vector<Rack> racks;
-    unsigned int haveSpaces, warehouseCapacity;
+    unsigned int haveSpaces;
+    static int warehouseCapacity;
 
     bool seek(Item addedItem, int& slider1, int& slider2, int& slider3);
     bool placeItem(Item& addedItem);
@@ -26,7 +27,7 @@ class Warehouse {
     void addItemWarehouse(Item i);
     void extractItem(Item I);
     void printItems();
-
+    void clear(Date today);
 
 };
 

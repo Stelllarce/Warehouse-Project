@@ -33,7 +33,6 @@ class Item {
     bool operator==(const Item& i);
 
     //getters
-    String& log();
     unsigned int getRack();
     unsigned int getShelf();
     String getName() const;

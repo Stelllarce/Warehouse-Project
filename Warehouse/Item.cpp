@@ -1,7 +1,7 @@
-#include <iostream>
 #include "../String/Stringh.h"
 #include "Date.h"
 #include "Item.h"
+#include <iostream>
 
 Item::Item(): description(String()), 
 manufacturer(String()), 
@@ -107,8 +107,16 @@ Date Item::getExpiration() {
 }
 
 std::istream& operator>>(std::istream& is, Item& d) {
-
-    is >> "Enter name: " >> d.description >> "\nEnter manufacturer: " >> d.manufacturer >> "\nEnter current date: " >> d.gotIn >> "\nEnter expiration date: " >> d.expiration;
+    std::cout << "Enter name: ";
+    is >> d.description; 
+    std::cout <<"\nEnter manufacturer: "; 
+    is >> d.manufacturer;
+    std::cout << "\nEnter quantity: ";
+    is >> d.quantity;
+    std::cout << "\nEnter current date: "; 
+    is >> d.gotIn;
+    std::cout << "\nEnter expiration date: ";
+    is >> d.expiration;
     std::cout << "Would you like to add a comment? Type 'yes' to add\n";
     String temp;
     is >> temp;
@@ -120,15 +128,6 @@ std::istream& operator>>(std::istream& is, Item& d) {
     
 
 }  
-
-String& Item::log() {
-
-    String temp;
-    temp = description + String(" by ") + manufacturer;
-    temp = temp + manufacturer;
-
-    temp = temp + String ("Quantity: ");
-}
 
 void Item::setLocation(unsigned int rack, unsigned int shelf, unsigned int idn) {
 

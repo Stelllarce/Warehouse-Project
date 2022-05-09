@@ -1,8 +1,8 @@
 #include "Rack.h"
 
-const unsigned int rackCap = 0;
+int Rack::shelfCapacity = 0;
 
-Rack::Rack(char name): name{name}, haveSpace(rackCap), shelfCapacity(rackCap) {
+Rack::Rack(char name): name{name}, haveSpace(shelfCapacity) {
 
     int index = 1;
     for (int i = 0; i < shelfCapacity; i++)

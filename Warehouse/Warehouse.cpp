@@ -204,8 +204,12 @@ void Warehouse::clear(Date today) {
         {
             for (int k = 0; k < Shelf::itemCapacity; k++)
             {
-                racks[i].shelfs[j].items[k].getExpiration() <= today;
-                racks[i].shelfs[j].items.removeAt(k);
+                if (racks[i].shelfs[j].items[k].getExpiration() <= today)
+                {
+                    racks[i].shelfs[j].items[k].printItem();
+                    racks[i].shelfs[j].items.removeAt(k);
+                    std::cout << "Item removed\n";
+                }
             }
             
         }

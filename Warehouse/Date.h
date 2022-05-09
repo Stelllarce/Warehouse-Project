@@ -25,6 +25,7 @@ class Date {
     Date operator-(const Date& d);
 
     bool operator<(const Date& d); 
+    bool operator<=(const Date& d); 
     bool operator>(const Date& d);
     bool operator==(const Date& d);
     bool operator!=(const Date& d);

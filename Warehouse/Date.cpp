@@ -127,3 +127,20 @@ bool Date::operator!=(const Date& d) {
 
     return (year != d.year || month != d.month || day != d.day);
 }
+
+bool Date::operator<=(const Date& d) {
+
+        if (year < d.year)
+    {
+        return true;
+    }
+    if (year == d.year && month < d.month)
+    {
+        return true;
+    }
+    if (year == d.year && month == d.month && day <= d.day)
+    {
+        return true;
+    }
+    return false;
+} 

@@ -15,7 +15,12 @@ class Item {
     Date expiration;
     String comment;
 
+<<<<<<< HEAD
     unsigned int rack, shelf, idn, quantity;
+=======
+    char rack;
+    unsigned int shelf, idn, quantity;
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 
     public:
 
@@ -25,7 +30,11 @@ class Item {
     Item(const Item& other);
 
     //mutators
+<<<<<<< HEAD
     void setLocation(unsigned int rack, unsigned int shelf, unsigned int idn);
+=======
+    //void setIdn(int pos);
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     void addComment();
 
     //compare operators
@@ -33,7 +42,12 @@ class Item {
     bool operator==(const Item& i);
 
     //getters
+<<<<<<< HEAD
     unsigned int getRack();
+=======
+    String& log();
+    char getRack();
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;
@@ -51,8 +65,11 @@ class Item {
 
     void printItem();
 
+<<<<<<< HEAD
     void save();
 
+=======
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     friend std::istream& operator>>(std::istream& is, Item& d);    
 };
     std::istream& operator>>(std::istream& is, Item& d);    

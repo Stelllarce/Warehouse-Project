@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 #include "../String/Stringh.h"
 #include "Date.h"
 #include "Item.h"
 #include <iostream>
 #include <fstream>
+=======
+#include <iostream>
+#include "../String/Stringh.h"
+#include "Date.h"
+#include "Item.h"
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 
 Item::Item(): description(String()), 
 manufacturer(String()), 
@@ -108,6 +115,7 @@ Date Item::getExpiration() {
 }
 
 std::istream& operator>>(std::istream& is, Item& d) {
+<<<<<<< HEAD
     std::cout << "Enter name: ";
     is >> d.description; 
     std::cout <<"\nEnter manufacturer: "; 
@@ -118,6 +126,10 @@ std::istream& operator>>(std::istream& is, Item& d) {
     is >> d.gotIn;
     std::cout << "\nEnter expiration date: ";
     is >> d.expiration;
+=======
+
+    is >> "Enter name: " >> d.description >> "\nEnter manufacturer: " >> d.manufacturer >> "\nEnter current date: " >> d.gotIn >> "\nEnter expiration date: " >> d.expiration;
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     std::cout << "Would you like to add a comment? Type 'yes' to add\n";
     String temp;
     is >> temp;
@@ -130,12 +142,25 @@ std::istream& operator>>(std::istream& is, Item& d) {
 
 }  
 
+<<<<<<< HEAD
+=======
+String& Item::log() {
+
+    String temp;
+    temp = description + String(" by ") + manufacturer;
+    temp = temp + manufacturer;
+
+    temp = temp + String ("Quantity: ");
+}
+
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 void Item::setLocation(unsigned int rack, unsigned int shelf, unsigned int idn) {
 
     this->rack = rack;
     this->shelf= shelf;
     this->idn = idn;
 }
+<<<<<<< HEAD
 
 // void Item::save(std::ofstream &os) {
 
@@ -168,3 +193,5 @@ void Item::save() {
 
 }
 
+=======
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5

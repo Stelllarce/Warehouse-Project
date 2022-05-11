@@ -9,8 +9,12 @@ class Rack {
     Shelf a;
     Vector<Shelf> shelfs;
     char name;
+<<<<<<< HEAD
     unsigned int haveSpace;
     static int shelfCapacity;
+=======
+    unsigned int haveSpace, shelfCapacity;
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     
     public:
 

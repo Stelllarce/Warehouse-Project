@@ -19,6 +19,10 @@ class Date {
     Date(unsigned int year, unsigned int month, unsigned int day);
     Date(const Date& d);
     ~Date(){}
+    //getters
+    unsigned int getYear();
+    unsigned int getMonth();
+    unsigned int getDay();
     //operators
     Date& operator=(const Date& d);
     //time period bewteen two dates

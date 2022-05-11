@@ -51,6 +51,8 @@ class Item {
 
     void printItem();
 
+    void save();
+
     friend std::istream& operator>>(std::istream& is, Item& d);    
 };
     std::istream& operator>>(std::istream& is, Item& d);    

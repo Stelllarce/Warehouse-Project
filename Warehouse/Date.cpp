@@ -143,4 +143,8 @@ bool Date::operator<=(const Date& d) {
         return true;
     }
     return false;
-} 
+}
+
+unsigned int Date::getYear() { return year; }
+unsigned int Date::getMonth() { return month; }
+unsigned int Date::getDay() { return day; }

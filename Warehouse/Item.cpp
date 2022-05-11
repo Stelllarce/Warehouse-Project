@@ -2,6 +2,7 @@
 #include "Date.h"
 #include "Item.h"
 #include <iostream>
+#include <fstream>
 
 Item::Item(): description(String()), 
 manufacturer(String()), 
@@ -134,4 +135,29 @@ void Item::setLocation(unsigned int rack, unsigned int shelf, unsigned int idn) 
     this->rack = rack;
     this->shelf= shelf;
     this->idn = idn;
+}
+
+void Item::save(std::ofstream &os) {
+
+    os.write(description.cStr(), description.get_size());
+    os.write(manufacturer.cStr(), manufacturer.get_size());
+    os.write((char*)&quantity, sizeof(quantity));
+    os.write((char*)&gotIn.year, 4);
+    os.write((char*)&gotIn.month, sizeof(gotIn.month));
+    os.write((char*)&gotIn.day, sizeof(gotIn.day));
+    os.write(comment.cStr(), comment.get_size());
+    os.write((char*)&quantity, sizeof(quantity));
+    os.write((char*)&rack, sizeof(rack));
+    os.write((char*)&shelf, sizeof(shelf));
+    os.write((char*)&idn, sizeof(idn));
+
+
+}
+
+void Item::save(std::ofstream &file) {
+
+    file << description << " " << manufacturer << " " << quantity << " " << gotIn << " " << expiration << " " << rack << " " << shelf << " " << idn << " " << comment;
+
+
+
 }

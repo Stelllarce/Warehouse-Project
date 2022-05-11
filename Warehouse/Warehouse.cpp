@@ -1,5 +1,6 @@
 #include "Warehouse.h"
 #include <exception>
+#include <fstream>
 
 int Warehouse::warehouseCapacity = 5;
 
@@ -21,13 +22,22 @@ void Warehouse::addItemWarehouse(Item I) {
     if (seek(I, i, j, k))//if similar item is found
     {
         //sorting algorithm
-        if(sort(I, i, j, k)) { return; }
+        if(sort(I, i, j, k)) 
+        { 
+            I.save();
+            return;
+        }
     }
 
     //if similar item is not found (or sorting attempt has failed) place the item on the first empty space found
     //the algorithm sorts the items by going through all first positions on every shelf
     //and then going to every second and so on, until it finds a suitable space
-    if( !(placeItem(I)) ) throw std::runtime_error("Warehouse is full!");
+    if( !(placeItem(I)) ) 
+    {
+        throw std::runtime_error("Warehouse is full!");
+        return;
+    }
+    I.save();
     return;
     
 }
@@ -206,9 +216,10 @@ void Warehouse::clear(Date today) {
             {
                 if (racks[i].shelfs[j].items[k].getExpiration() <= today)
                 {
+                    std::cout << "Item to remove: ";
                     racks[i].shelfs[j].items[k].printItem();
                     racks[i].shelfs[j].items.removeAt(k);
-                    std::cout << "Item removed\n";
+                    std::cout << "\nItem removed\n";
                 }
             }
             
@@ -217,3 +228,22 @@ void Warehouse::clear(Date today) {
     }
     
 }
+
+// void Warehouse::SaveToFile(const char* fileName) {
+
+//     String fileName1 = String(fileName) + String(".txt");
+//     std::ofstream file(fileName1.cStr());
+//     for (int i = 0; i < warehouseCapacity; i++)
+//     {
+//         for (int j = 0; j < Rack::shelfCapacity; j++)
+//         {
+//             for (int k = 0; k < Shelf::itemCapacity; k++)
+//             {
+//                 racks[i].shelfs[j].items[k].save(file);
+//             }
+            
+//         }
+        
+//     }
+//     file.close();    
+// }

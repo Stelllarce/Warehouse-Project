@@ -24,6 +24,7 @@ class Date {
     unsigned int getYear();
     unsigned int getMonth();
     unsigned int getDay();
+    String getDate();
     //operators
     Date& operator=(const Date& d);
     //time period bewteen two dates

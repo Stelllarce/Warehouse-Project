@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../String/Stringh.h"
+#include "Item.h"
 
 class Date {
 
@@ -36,7 +37,7 @@ class Date {
     //friends
     friend std::ostream& operator<<(std::ostream& stream, const Date& d);
     friend std::istream& operator>>(std::istream& is, Date& d);
-
+    //friend void Item::save(std::ofstream &os);
 
 };
 

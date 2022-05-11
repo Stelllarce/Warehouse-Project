@@ -7,11 +7,16 @@ using std::cout;
 
 void writeToLog(Vector<String> v, Item item) {
     //requires date and quantuty to be converted to string
-    String a("Added ");
-    strcat(a.cStr(), item.getName().cStr());
-    strcat(a, " ");
-    strcat(a, item.getManufact());
-    strcat(a, " ");
+    
+}
+void writeToHistory(Vector<String>& v, Item item, const char* prefix) {
+
+    String log(prefix);
+    log = item.getName() + String(" ");
+    log = log + item.getManufact();
+    log = log + String(" ");
+    log = log + item.getExpiration().getDate();
+    v.pushBack(log);
 }
 
 int main() {

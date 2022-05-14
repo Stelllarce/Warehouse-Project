@@ -4,8 +4,6 @@
 Date::Date(): date(String()), year{0}, month{0}, day{0} {}
 
 Date::Date(unsigned int year, unsigned int month, unsigned int day): year(year), month(month), day(day) {
-    std::cout << "constr called!";
-    date = String("josh");
 }
 
 Date::Date(const char* s): date{String(s)} {}
@@ -42,31 +40,31 @@ std::istream& operator>>(std::istream& is, Date& d){
     //checking if the year format is correct
     if (d.year >= 2050 || d.year <= 1000)
     {
-        throw "Wrong year format.";
+        throw std::runtime_error("Wrong year format.");
     }
     //checking if the numbers are separeted correctly
     if (not_read != '.')
     {
-        throw "Expected a '.'";
+        throw std::runtime_error("Expected a '.'");
     }
     
     is >> d.month >> not_read ;
     //checking if the month format is correct
     if (d.month > 12 || d.month < 1)
     {
-        throw "Wrong month format.";
+        throw std::runtime_error("Wrong month format.");
     }
     //checking if the numbers are separeted correctly
     if (not_read != '.')
     {
-        throw "Expected a '.'";
+        throw std::runtime_error("Expected a '.'");
     }
     
     is >> d.day;
     //checking if the day format is correct
     if (d.month == 2 && d.day > 28)
     {
-        throw "This month does not have more than 28 days!";
+        throw std::runtime_error("This month does not have more than 28 days!");
     }
     if (d.day > 31 || d.day < 1)
     {
@@ -74,11 +72,13 @@ std::istream& operator>>(std::istream& is, Date& d){
         {
             if (d.month == monthsThirty[i] && d.day >= 31)
             {
-                throw "This month does not have more than 30 days!";
+                throw std::runtime_error("This month does not have more than 30 days!");
             }
         }
-        throw "Wrong day format.";
+        throw std::runtime_error("Wrong day format.");
     }
+
+    d.setDate(d.year, d.month, d.day);
 
     return is;
 }
@@ -153,3 +153,16 @@ unsigned int Date::getMonth() { return month; }
 unsigned int Date::getDay() { return day; }
 
 String Date::getDate() { return this->date; }
+
+void Date::setDate(unsigned int year, unsigned int month, unsigned int day) {
+
+    String DD, MM, YY;
+    YY.toString(year);
+    MM.toString(month);
+    DD.toString(day);
+
+    date = YY + String("-");
+    date = date + MM;
+    date = date + String("-");
+    date = date + DD;
+}

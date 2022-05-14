@@ -28,7 +28,7 @@ class Date {
     Date& operator=(const Date& d);
     //time period bewteen two dates
     Date operator-(const Date& d);
-
+    void setDate(unsigned int year, unsigned int month, unsigned int day);
     bool operator<(const Date& d); 
     bool operator<=(const Date& d); 
     bool operator>(const Date& d);

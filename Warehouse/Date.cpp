@@ -3,7 +3,6 @@
 
 Date::Date(): year{0}, month{0}, day{0} {}
 
-<<<<<<< HEAD
 Date::Date(unsigned int year, unsigned int month, unsigned int day): year{year}, month{month}, day{day} {
     String yearT, monthT, dayT;
     yearT.toString(this->year);
@@ -16,11 +15,6 @@ Date::Date(unsigned int year, unsigned int month, unsigned int day): year{year},
 }
 
 Date::Date(const char* s): date{String(s)} {}
-=======
-Date::Date(unsigned int year, unsigned int month, unsigned int day): year{year}, month{month}, day{day} {}
-
-Date::Date(const char* s): date{String(s)} { }
->>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 
 Date::Date(const Date& d): year{d.year}, month{d.month}, day{d.day} {}
 
@@ -141,7 +135,6 @@ bool Date::operator==(const Date& d) {
 bool Date::operator!=(const Date& d) {
 
     return (year != d.year || month != d.month || day != d.day);
-<<<<<<< HEAD
 }
 
 bool Date::operator<=(const Date& d) {
@@ -166,6 +159,3 @@ unsigned int Date::getMonth() { return month; }
 unsigned int Date::getDay() { return day; }
 
 String Date::getDate() { return date; }
-=======
-}
->>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5

@@ -1,5 +1,9 @@
 #include <iostream>
 #include <cstring>
+<<<<<<< HEAD
+#include <sstream>
+=======
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 #include "Stringh.h"
     
     void String::resize(size_t capacity) { 
@@ -278,3 +282,17 @@
         //std::cout << "Destr" << '\n';
         delete[] string;
     }
+<<<<<<< HEAD
+    template <typename T>
+    void String::toString(T type) {
+
+        std::string st = std::to_string(type);
+        const char* cstr = st.c_str();
+        capacity = strlen(cstr) + 1;
+        len = strlen(cstr);
+        string = new char[capacity];
+        strcpy(string, cstr);
+
+    }
+=======
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5

@@ -1,7 +1,15 @@
+<<<<<<< HEAD
+#include "../String/Stringh.h"
+#include "Date.h"
+#include "Item.h"
+#include <iostream>
+#include <fstream>
+=======
 #include <iostream>
 #include "../String/Stringh.h"
 #include "Date.h"
 #include "Item.h"
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 
 Item::Item(): description(String()), 
 manufacturer(String()), 
@@ -107,8 +115,21 @@ Date Item::getExpiration() {
 }
 
 std::istream& operator>>(std::istream& is, Item& d) {
+<<<<<<< HEAD
+    std::cout << "Enter name: ";
+    is >> d.description; 
+    std::cout <<"\nEnter manufacturer: "; 
+    is >> d.manufacturer;
+    std::cout << "\nEnter quantity: ";
+    is >> d.quantity;
+    std::cout << "\nEnter current date: "; 
+    is >> d.gotIn;
+    std::cout << "\nEnter expiration date: ";
+    is >> d.expiration;
+=======
 
     is >> "Enter name: " >> d.description >> "\nEnter manufacturer: " >> d.manufacturer >> "\nEnter current date: " >> d.gotIn >> "\nEnter expiration date: " >> d.expiration;
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     std::cout << "Would you like to add a comment? Type 'yes' to add\n";
     String temp;
     is >> temp;
@@ -121,6 +142,8 @@ std::istream& operator>>(std::istream& is, Item& d) {
 
 }  
 
+<<<<<<< HEAD
+=======
 String& Item::log() {
 
     String temp;
@@ -130,9 +153,45 @@ String& Item::log() {
     temp = temp + String ("Quantity: ");
 }
 
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
 void Item::setLocation(unsigned int rack, unsigned int shelf, unsigned int idn) {
 
     this->rack = rack;
     this->shelf= shelf;
     this->idn = idn;
 }
+<<<<<<< HEAD
+
+// void Item::save(std::ofstream &os) {
+
+//     os.write(description.cStr(), description.get_size());
+//     os.write(manufacturer.cStr(), manufacturer.get_size());
+//     os.write((char*)&quantity, sizeof(quantity));
+//     os.write((char*)&gotIn.year, 4);
+//     os.write((char*)&gotIn.month, sizeof(gotIn.month));
+//     os.write((char*)&gotIn.day, sizeof(gotIn.day));
+//     os.write(comment.cStr(), comment.get_size());
+//     os.write((char*)&quantity, sizeof(quantity));
+//     os.write((char*)&rack, sizeof(rack));
+//     os.write((char*)&shelf, sizeof(shelf));
+//     os.write((char*)&idn, sizeof(idn));
+
+
+// }
+
+void Item::save() {
+    std::ofstream file("Items.txt");
+    if (!file.is_open())
+    {
+        throw std::runtime_error("Eroor");
+        return;
+    }
+    
+    file << description << " " << manufacturer << " " << quantity << " GotIn: " << gotIn << " EXP: " << expiration << " " << rack << "." << shelf << "." << idn << "\nComment:\n" << comment;
+    file.close();
+
+
+}
+
+=======
+>>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5

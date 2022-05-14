@@ -9,7 +9,7 @@ void writeToLog();
 int main() {
     Warehouse johnson("Johnson");
     String userInput;
-    Vector<String> history;
+    //Vector<String> history;
     cout  << "Welcome to warehouse interface!\n";
     cout << "To check available commands type 'help'" << '\n';
     while (cin >> userInput) 
@@ -32,13 +32,11 @@ int main() {
 
         if (userInput == String("add"))
         {
-            String a("Added item ");
             Item itemToAdd;
             cout << "Enter the item you want to add\n";
             cin >> itemToAdd;
-            String cat = a + itemToAdd.getName();
             johnson.addItemWarehouse(itemToAdd);
-            history.pushBack(String());
+            //history.pushBack(String());
         }
 
         if (userInput == String("get"))
@@ -48,7 +46,7 @@ int main() {
         
         if (userInput == String("history"))
         {
-            /* code */
+            //history.print();//should be done with a file, cant think of a way to make it with a vector
         }
         
         if (userInput == String("clear"))

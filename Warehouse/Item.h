@@ -15,8 +15,7 @@ class Item {
     Date expiration;
     String comment;
 
-    char rack;
-    unsigned int shelf, idn, quantity;
+    unsigned int rack, shelf, idn, quantity;
 
     public:
 
@@ -26,7 +25,7 @@ class Item {
     Item(const Item& other);
 
     //mutators
-    //void setIdn(int pos);
+    void setLocation(unsigned int rack, unsigned int shelf, unsigned int idn);
     void addComment();
 
     //compare operators
@@ -35,7 +34,7 @@ class Item {
 
     //getters
     String& log();
-    char getRack();
+    unsigned int getRack();
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;

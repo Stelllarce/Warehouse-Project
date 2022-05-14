@@ -1,5 +1,5 @@
 #ifndef __VECTOR_H__
-#define __VECTOR_H__
+#define __VECTOR_H__//test
 #include <iostream>
 #include <exception>
 using namespace std;

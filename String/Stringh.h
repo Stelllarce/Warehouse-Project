@@ -1,6 +1,8 @@
 #ifndef STRING_H
 #define STRING_H
 #include <iostream>
+#include <cstring>
+#include <sstream>
 class String {
 
     private:
@@ -76,5 +78,19 @@ class String {
     //output/input stream
     std::ostream& operator<<(std::ostream& os, const String& s);
     std::istream& operator>>(std::istream& is, String& s);
+    
+    template <typename T>
+    void String::toString(T type) {
+
+
+        std::string st = std::to_string(type);
+        char const* cstr = st.c_str();
+        capacity = strlen(cstr);
+        len = strlen(cstr);
+        delete[] string;
+        string = new char[capacity + 1];
+        strcpy(string, cstr);
+
+    }
 
 #endif

@@ -1,7 +1,5 @@
-#include <iostream>
-#include <cstring>
-#include <sstream>
 #include "Stringh.h"
+
     
     void String::resize(size_t capacity) { 
     
@@ -41,10 +39,7 @@
         }
         return count;
     }
-    String::String(): string{ new char[1] }, capacity(1), len(0) {
-
-        string[0] = '\0';
-    }
+    String::String(): string{ new char[1] }, capacity(1), len(0) {}
     
     String::String(char *s): string{ new char[strlen(s) + 1]}, len{strlen(s)}, capacity{len} {
 
@@ -279,14 +274,4 @@
         //std::cout << "Destr" << '\n';
         delete[] string;
     }
-    template <typename T>
-    void String::toString(T type) {
-
-        std::string st = std::to_string(type);
-        const char* cstr = st.c_str();
-        capacity = strlen(cstr) + 1;
-        len = strlen(cstr);
-        string = new char[capacity];
-        strcpy(string, cstr);
-
-    }
+    

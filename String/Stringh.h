@@ -52,12 +52,8 @@ class String {
     //operations
     const char* cStr() const;
     String my_substr(size_t pos, size_t len) const;
-<<<<<<< HEAD
     template <typename T>
     void toString(T type);
-=======
- 
->>>>>>> 523906c2b62b4c52a65d78c141338b6823b6cce5
     
 };
     //strcat

@@ -78,6 +78,7 @@ int main() {
             cout << "Do you wish to extract another item?\n";
             cin >> answer;
         } while (answer == String("yes"));
+        }
 
         if (userInput == String("history"))
         {
@@ -90,18 +91,15 @@ int main() {
             cout << "Enter todays date:\n";
             cin >> today;
             johnson.clear(today);
-            /* code */
         }
 
         if (userInput == String("end"))
         {
+            cout << "Closing the program...";
             break;
         }
         
+
     }
-    
-    
-
-
     return 0;
 }

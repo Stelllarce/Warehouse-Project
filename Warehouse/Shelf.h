@@ -2,11 +2,13 @@
 #define SHELF
 #include <iostream>
 #include "Item.h"
-#include "..\Vector\Vector.cpp"
+#include "..\Vector\Vector.h"
 #include "Warehouse.h"
 
 class Shelf {
 
+    private: 
+    
     Vector<Item> items;
     unsigned int name, itemCount;
     static int itemCapacity;

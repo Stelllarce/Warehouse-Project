@@ -36,9 +36,7 @@ class Item {
     //getters
 
     unsigned int getRack();
-    String& log();
-    unsigned int getRack();
-
+    //String& log();
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;

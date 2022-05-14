@@ -1,17 +1,11 @@
 #include "Date.h"
 #include <exception>
 
-Date::Date(): year{0}, month{0}, day{0} {}
+Date::Date(): date(String()), year{0}, month{0}, day{0} {}
 
-Date::Date(unsigned int year, unsigned int month, unsigned int day): year{year}, month{month}, day{day} {
-    String yearT, monthT, dayT;
-    yearT.toString(this->year);
-    monthT.toString(this->month);
-    dayT.toString(this->day);
-    date = yearT + String("-");
-    date = date + monthT;
-    date = date + String("-");
-    date = date + dayT;
+Date::Date(unsigned int year, unsigned int month, unsigned int day): year(year), month(month), day(day) {
+    std::cout << "constr called!";
+    date = String("josh");
 }
 
 Date::Date(const char* s): date{String(s)} {}
@@ -46,7 +40,7 @@ std::istream& operator>>(std::istream& is, Date& d){
     int monthsThirty[] = { 2, 4, 6, 9, 11 };
     is >> d.year >> not_read;
     //checking if the year format is correct
-    if (d.year >= 2030 || d.year <= 1000)
+    if (d.year >= 2050 || d.year <= 1000)
     {
         throw "Wrong year format.";
     }
@@ -69,7 +63,7 @@ std::istream& operator>>(std::istream& is, Date& d){
     }
     
     is >> d.day;
-    //checking if the date format is correct
+    //checking if the day format is correct
     if (d.month == 2 && d.day > 28)
     {
         throw "This month does not have more than 28 days!";
@@ -158,4 +152,4 @@ unsigned int Date::getYear() { return year; }
 unsigned int Date::getMonth() { return month; }
 unsigned int Date::getDay() { return day; }
 
-String Date::getDate() { return date; }
+String Date::getDate() { return this->date; }

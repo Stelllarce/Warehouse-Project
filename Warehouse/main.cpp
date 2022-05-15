@@ -12,21 +12,31 @@ void writeToLog(Vector<String> v, Item item) {
 void writeToHistory(Vector<String>& v, Item item, const char* prefix) {
 
     String log(prefix);
-    log = item.getName() + String(" ");
+    String qnt;
+    qnt.toString(item.getQuantity());
+    log = log + item.getName();
+    log = log + String(" by ");
     log = log + item.getManufact();
-    log = log + String(" ");
-    log = log + item.getExpiration().getDate();
-    v.pushBack(log);
-}
+    log = log + String(" by ");
+    log = log + String(" ,expiring on: ");
+    log = log + item.getExpirationS();
+    log = log + String(" ,quantity: ");
+    log = log + qnt;
+    log = log + String(" ,got in the warehouse on: ");
+    log = log + item.getGotinS();
+    log = log + String(" ,location: ");
+    log = log + item.getLocation();
 
+    v.pushBack(log); 
+}
 int main() {
     Warehouse johnson("Johnson");
     String userInput;
-    //Vector<String> history;
     Vector<String> history;
 
-    cout  << "Welcome to warehouse interface!\n";
+    cout  << "-----------------------Welcome to " << johnson.getName() << " warehouse interface!-----------------------\n";
     cout << "To check available commands type 'help'" << '\n';
+    cout << "Enter a command: ";
     while (cin >> userInput) 
     {
         if (userInput == String("help"))
@@ -49,14 +59,16 @@ int main() {
         String answer;
         do
         {
-            
-            
             Item itemToAdd;
+            Vector<Item> itemList;
+            int i = 0;
             cout << "Enter the item you want to add\n";
             cin >> itemToAdd;
-            johnson.addItemWarehouse(itemToAdd);                
+            itemList.pushBack(itemToAdd);
+            johnson.addItemWarehouse(itemList[i]);                
             cout << "Item added succesfully!\n";
-            //history.pushBack(String());
+            i++;
+            writeToHistory(history, itemToAdd, "Added ");
             
             cout << "Do you wish to add another item?\n";
             cin >> answer;
@@ -69,11 +81,14 @@ int main() {
         {
     
             Item itemToAdd;
+            Vector<Item> itemList;
+            int i = 0;
             cout << "Enter the item you want to extract\n";
             cin >> itemToAdd;
-            johnson.extractItem(itemToAdd);                
+            itemList.pushBack(itemToAdd);
+            johnson.extractItem(itemList[i]);                
             cout << "Item extracted succesfully!\n";
-            //history.pushBack(String());
+            writeToHistory(history, itemToAdd, "Extracted ");
             
             cout << "Do you wish to extract another item?\n";
             cin >> answer;
@@ -82,7 +97,7 @@ int main() {
 
         if (userInput == String("history"))
         {
-            /* code */
+            history.print();
         }
         
         if (userInput == String("clear"))

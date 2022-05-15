@@ -28,15 +28,17 @@ void Warehouse::addItemWarehouse(Item I) {
             return;
         }
     }
-
+    std::cout << "didnt";
     //if similar item is not found (or sorting attempt has failed) place the item on the first empty space found
     //the algorithm sorts the items by going through all first positions on every shelf
     //and then going to every second and so on, until it finds a suitable space
-    if( !(placeItem(I)) ) 
-    {
-        throw std::runtime_error("Warehouse is full!");
-        return;
-    }
+    // if( !(placeItem(I)) ) 
+    // {
+    //     throw std::runtime_error("Warehouse is full!");
+    //     return;
+    // }
+    if(!placeItem(I)) { std::cout << "nay"; }
+    std::cout << "\ndhidnt";
     I.save("Items.txt");
     return;
     
@@ -218,6 +220,7 @@ void Warehouse::clear(Date today) {
                 {
                     std::cout << "Item to remove: ";
                     racks[i].shelfs[j].items[k].printItem();
+                    racks[i].shelfs[j].items[k].save(today.getDate().cStr());
                     racks[i].shelfs[j].items.placeAt(k, Item());
                     std::cout << "\nItem removed\n";
                 }

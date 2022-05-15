@@ -170,7 +170,7 @@ void Item::save(const char* filename) {
         return;
     }
     
-    file << description << " " << manufacturer << " " << quantity << " GotIn: " << gotIn << " EXP: " << expiration << " " << rack << "." << shelf << "." << idn << "\nComment:\n" << comment;
+    file << description << " " << manufacturer << " " << quantity << " GotIn: " << gotIn << "EXP: " << expiration << " " << rack << "." << shelf << "." << idn << "\nComment:\n" << comment;
     file.close();
 
 

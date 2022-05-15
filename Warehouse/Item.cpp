@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-Item::Item(): description(String()), 
+Item::Item(): description(String("-1")), 
 manufacturer(String()), 
 gotIn(Date()), 
 expiration(Date()), 
@@ -12,7 +12,8 @@ rack(0),
 shelf{0}, 
 idn{0}, 
 quantity(0), 
-comment(String()) {}
+comment(String()),
+location(String()) {}
 
 
 Item::Item(String description, String manufacturer, Date expiration, Date gotIn,  unsigned int quantity): 
@@ -107,24 +108,31 @@ Date Item::getExpiration() {
     return expiration;
 }
 
+String Item::getExpirationS() {
+
+    return expiration.getDate();
+}
+
 std::istream& operator>>(std::istream& is, Item& d) {
     std::cout << "Enter name: ";
     is >> d.description; 
-    std::cout <<"\nEnter manufacturer: "; 
+    std::cout <<"Enter manufacturer: "; 
     is >> d.manufacturer;
-    std::cout << "\nEnter quantity: ";
+    std::cout << "Enter quantity: ";
     is >> d.quantity;
-    std::cout << "\nEnter current date: "; 
+    std::cout << "Enter current date in YYYY.MM.DD: "; 
     is >> d.gotIn;
-    std::cout << "\nEnter expiration date: ";
+    is.ignore();
+    std::cout << "Enter expiration date in YYYY.MM.DD: "; 
     is >> d.expiration;
-    std::cout << "Would you like to add a comment? Type 'yes' to add\n";
-    String temp;
-    is >> temp;
-    if (temp == String("yes"))
+    is.ignore();
+    std::cout << "Would you like to add a comment? Type 'nocomment' is you dont\n";
+    is >> d.comment;
+    if (d.comment == String("nocomment"))
     {
-        d.addComment();
+        d.comment  = String();
     }
+    
     return is;
     
 
@@ -154,11 +162,11 @@ void Item::setLocation(unsigned int rack, unsigned int shelf, unsigned int idn) 
 
 // }
 
-void Item::save() {
-    std::ofstream file("Items.txt");
+void Item::save(const char* filename) {
+    std::ofstream file(filename);
     if (!file.is_open())
     {
-        throw std::runtime_error("Eroor");
+        throw std::runtime_error("Error");
         return;
     }
     
@@ -167,4 +175,27 @@ void Item::save() {
 
 
 }
+
+void Item::setLocationString() {
+
+    String R, S, I;
+    R.toString(rack);
+    S.toString(shelf);
+    I.toString(idn);
+
+    location = R + String("-");
+    location = location + S;
+    location = location + String(".");
+    location = location + I;
+
+}
+
+Date Item::getGotin() { return gotIn; }
+
+String Item::getGotinS() {
+
+    return gotIn.getDate();
+}
+
+String Item::getLocation() { return location; }
 

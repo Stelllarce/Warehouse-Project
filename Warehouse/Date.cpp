@@ -77,8 +77,7 @@ std::istream& operator>>(std::istream& is, Date& d){
         }
         throw std::runtime_error("Wrong day format.");
     }
-
-    d.setDate(d.year, d.month, d.day);
+    d.setDate();
 
     return is;
 }
@@ -154,7 +153,7 @@ unsigned int Date::getDay() { return day; }
 
 String Date::getDate() { return this->date; }
 
-void Date::setDate(unsigned int year, unsigned int month, unsigned int day) {
+void Date::setDate() {
 
     String DD, MM, YY;
     YY.toString(year);

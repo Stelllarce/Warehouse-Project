@@ -14,9 +14,9 @@ class Item {
     Date gotIn;
     Date expiration;
     String comment;
+    String location;
 
     unsigned int rack, shelf, idn, quantity;
-
     public:
 
     //constructors
@@ -26,6 +26,7 @@ class Item {
 
     //mutators
 
+    void setLocationString();
     void setLocation(unsigned int rack, unsigned int shelf, unsigned int idn);
     void addComment();
 
@@ -36,12 +37,14 @@ class Item {
     //getters
 
     unsigned int getRack();
-    //String& log();
     unsigned int getShelf();
     String getName() const;
     String getManufact() const;
     Date getExpiration();
     String getExpirationS();
+    Date getGotin();
+    String getGotinS();
+    String getLocation();
     unsigned int getQuantity();
 
 
@@ -54,7 +57,7 @@ class Item {
 
     void printItem();
 
-    void save();
+    void save(const char* filename);
 
     friend std::istream& operator>>(std::istream& is, Item& d);    
 };

@@ -29,4 +29,4 @@ void Shelf::addItem(Item &item, int pos) {
     itemCount++;
 }
 
-bool Shelf::isEmpty(int pos) { return items[pos].getName() == "\0"; }
+bool Shelf::isEmpty(int pos) { return items[pos].getName() == "-1"; }

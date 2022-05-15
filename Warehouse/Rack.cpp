@@ -10,8 +10,7 @@ Rack::Rack(unsigned int name): name{name}, haveSpace(shelfCapacity) {
     int index = 1;
     for (int i = 0; i < shelfCapacity; i++)
     {
-        Shelf newShelf(index);
-        shelfs.placeAt(i, newShelf);
+        shelfs.pushBack(Shelf(index));
         index++;
     }
     

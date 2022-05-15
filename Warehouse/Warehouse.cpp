@@ -24,7 +24,7 @@ void Warehouse::addItemWarehouse(Item I) {
         //sorting algorithm
         if(sort(I, i, j, k)) 
         { 
-            I.save();
+            I.save("Items.txt");
             return;
         }
     }
@@ -37,7 +37,7 @@ void Warehouse::addItemWarehouse(Item I) {
         throw std::runtime_error("Warehouse is full!");
         return;
     }
-    I.save();
+    I.save("Items.txt");
     return;
     
 }
@@ -202,7 +202,7 @@ void Warehouse::extractItem(Item I) {
     if (seek(I, i, j, k)) 
     {
         racks[i].shelfs[j].items[k].printItem();
-        racks[i].shelfs[j].items.removeAt(k);
+        racks[i].shelfs[j].items.placeAt(k, Item());
     }
 }
 
@@ -218,7 +218,7 @@ void Warehouse::clear(Date today) {
                 {
                     std::cout << "Item to remove: ";
                     racks[i].shelfs[j].items[k].printItem();
-                    racks[i].shelfs[j].items.removeAt(k);
+                    racks[i].shelfs[j].items.placeAt(k, Item());
                     std::cout << "\nItem removed\n";
                 }
             }
@@ -247,3 +247,5 @@ void Warehouse::clear(Date today) {
 //     }
 //     file.close();    
 // }
+
+String Warehouse::getName() { return name; }

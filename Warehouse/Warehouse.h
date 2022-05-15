@@ -24,6 +24,7 @@ class Warehouse {
     Warehouse();
     Warehouse(String name);
 
+    String getName();
     //void SaveToFile(const char* file);
 
     void addItemWarehouse(Item i);

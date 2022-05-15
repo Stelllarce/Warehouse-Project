@@ -82,7 +82,6 @@ class String {
     template <typename T>
     void String::toString(T type) {
 
-
         std::string st = std::to_string(type);
         char const* cstr = st.c_str();
         capacity = strlen(cstr);
